@@ -92,3 +92,35 @@ CREATE TABLE payments (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+CREATE TABLE orders (
+    order_id BIGSERIAL PRIMARY KEY,
+    customer_id BIGINT NOT NULL,
+    payment_id BIGINT,
+    order_date TIMESTAMP NOT NULL,
+    order_status VARCHAR(30) NOT NULL,
+    shipping_city VARCHAR(100),
+    shipping_state VARCHAR(100),
+
+    CONSTRAINT fk_order_customer
+    FOREIGN KEY(customer_id)
+    REFERENCES customers(customer_id),
+
+    CONSTRAINT fk_order_payment
+    FOREIGN KEY(payment_id)
+    REFERENCES payments(payment_id)
+);
+
