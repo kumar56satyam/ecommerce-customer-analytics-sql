@@ -124,3 +124,27 @@ CREATE TABLE orders (
     REFERENCES payments(payment_id)
 );
 
+
+
+
+
+
+CREATE TABLE returns( 
+    return_id BIGSERIAL PRIMARY KEY,
+    customer_id BIGINT NOT NULL, 
+    return_date DATE, return_reason VARCHAR(200), 
+    refund_amount NUMERIC(10,2), 
+    CONSTRAINT fk_return_order 
+    FOREIGN KEY(customer_id) 
+    REFERENCES customers(customer_id) );
+
+
+
+
+
+
+
+
+
+
+
