@@ -14,3 +14,14 @@ CREATE TABLE customers (
     customer_status VARCHAR(20) DEFAULT 'Active'
 );
 
+
+
+
+
+
+CREATE TABLE categories (
+    category_id BIGSERIAL PRIMARY KEY,
+    category_name VARCHAR(100) NOT NULL UNIQUE,
+    description TEXT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
