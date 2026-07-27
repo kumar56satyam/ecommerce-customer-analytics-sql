@@ -52,3 +52,43 @@ CREATE TABLE products (
         REFERENCES categories(category_id)
 );
 
+
+
+
+
+
+
+
+
+CREATE TABLE payments (
+    payment_id BIGSERIAL PRIMARY KEY,
+    payment_method VARCHAR(30) NOT NULL
+        CHECK (payment_method IN (
+            'Credit Card',
+            'Debit Card',
+            'UPI',
+            'Net Banking',
+            'Wallet',
+            'Cash on Delivery'
+        )),
+
+    payment_status VARCHAR(20) NOT NULL
+        CHECK (payment_status IN (
+            'Pending',
+            'Completed',
+            'Failed',
+            'Refunded'
+        )),
+
+    transaction_reference VARCHAR(100) UNIQUE,
+
+    payment_amount NUMERIC(10,2) NOT NULL
+        CHECK (payment_amount >= 0),
+
+    payment_date TIMESTAMP NOT NULL,
+
+    gateway_name VARCHAR(50),
+
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
