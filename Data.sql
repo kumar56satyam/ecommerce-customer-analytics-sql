@@ -1,7 +1,7 @@
 
 
 
-
+-- Insert data into customers table
 
 
 
