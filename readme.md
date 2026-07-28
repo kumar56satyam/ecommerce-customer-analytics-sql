@@ -272,17 +272,11 @@ Feel free to fork this repository and submit a pull request.
 
 ---
 
-# 📄 License
-
-This project is licensed under the MIT License.
-
----
-
 # 👨‍💻 Author
 
 **Kumar Satyam**
 
-- GitHub: https://github.com/yourusername
+- GitHub: https://github.com/kumar56satyam
 - LinkedIn: https://linkedin.com/in/yourprofile
 
 ---
