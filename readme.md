@@ -188,81 +188,10 @@ The project includes realistic sample data for:
 | Order Items | 200+ |
 | Returns | 40 |
 
----
 
-# 🚀 How to Run
-
-### 1. Clone the repository
-
-```bash
-git clone https://github.com/yourusername/ecommerce-customer-analytics-sql.git
-```
-
-### 2. Open PostgreSQL
-
-Use pgAdmin or psql.
-
-### 3. Execute SQL scripts
-
-Run the schema scripts first:
-
-```text
-schema/
-```
-
-Then import the data:
-
-```text
-data/
-```
-
-Finally, execute the SQL analysis scripts:
-
-```text
-queries/
-```
 
 ---
 
-# 📊 Future Improvements
-
-- Interactive Power BI Dashboard
-- Customer Churn Analysis
-- Sales Forecasting
-- Inventory Optimization
-- Customer Recommendation System
-- Python Data Pipeline
-- Automated Reporting
-
----
-
-# 📸 Screenshots
-
-Add screenshots of:
-
-- Database ER Diagram
-- PostgreSQL Query Results
-- Power BI Dashboard
-- Sales Dashboard
-- RFM Dashboard
-
----
-
-# 📚 Key Learning Outcomes
-
-Through this project I learned:
-
-- Relational database design
-- SQL query optimization
-- Business-oriented data analysis
-- Customer segmentation techniques
-- Advanced PostgreSQL features
-- Window functions
-- Common Table Expressions
-- Data storytelling
-- Business Intelligence concepts
-
----
 
 # 🤝 Contributing
 
@@ -277,7 +206,7 @@ Feel free to fork this repository and submit a pull request.
 **Kumar Satyam**
 
 - GitHub: https://github.com/kumar56satyam
-- LinkedIn: https://linkedin.com/in/yourprofile
+- LinkedIn: https://www.linkedin.com/in/kumar33satyam/
 
 ---
 
