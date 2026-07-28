@@ -192,7 +192,6 @@ The project includes realistic sample data for:
 
 ---
 
-
 # 🤝 Contributing
 
 Contributions, suggestions, and improvements are welcome.
