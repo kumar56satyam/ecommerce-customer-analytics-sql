@@ -311,3 +311,34 @@ VALUES
 ('Neha Gupta','customer300@example.com','9060461009','Male','1992-03-08','Kolkata','West Bengal','2023-06-06','Active');
 
 
+
+
+
+
+
+
+
+
+
+INSERT INTO categories (category_name, description)
+VALUES
+('Electronics', 'Mobile phones, laptops, tablets, accessories'),
+('Fashion', 'Clothing, footwear, watches, handbags'),
+('Home & Kitchen', 'Furniture, kitchen appliances, home decor'),
+('Beauty & Personal Care', 'Cosmetics, skincare, grooming products'),
+('Books', 'Printed books, eBooks, educational material'),
+('Sports & Fitness', 'Sports equipment, gym accessories, fitness gear'),
+('Grocery', 'Daily essentials, food items, beverages'),
+('Toys & Games', 'Kids toys, board games, educational toys'),
+('Automotive', 'Car and bike accessories, maintenance products'),
+('Health & Wellness', 'Healthcare products, supplements, medical devices'),
+('Jewellery', 'Gold, silver, diamond, fashion jewellery'),
+('Office Supplies', 'Stationery, office equipment, printers'),
+('Pet Supplies', 'Pet food, accessories, grooming products'),
+('Baby Products', 'Baby care, diapers, feeding accessories'),
+('Garden & Outdoor', 'Gardening tools, outdoor furniture'),
+('Musical Instruments', 'Guitars, keyboards, drums, accessories'),
+('Software', 'Software licenses, antivirus, productivity tools'),
+('Gaming', 'Gaming consoles, video games, gaming accessories'),
+('Travel & Luggage', 'Suitcases, backpacks, travel accessories'),
+('Gift Cards', 'Digital and physical gift cards');
