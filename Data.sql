@@ -1181,3 +1181,56 @@ VALUES
 (188,300,'2025-07-21 17:33:00','Delivered','Pune','Maharashtra');
 
 
+
+
+
+
+
+
+
+
+
+INSERT INTO returns
+(customer_id, return_date, return_reason, refund_amount)
+VALUES
+(22,'2025-02-01','Damaged Product',621.86),
+(72,'2025-04-03','Damaged Product',170.67),
+(59,'2025-06-07','Missing Accessories',1339.76),
+(12,'2025-03-27','Product Not as Described',1070.44),
+(191,'2025-04-19','Defective Product',212.72),
+(21,'2025-04-06','Wrong Item Delivered',1285.16),
+(128,'2025-06-23','Wrong Item Delivered',57.67),
+(16,'2025-01-13','Ordered by Mistake',462.86),
+(66,'2025-01-25','Missing Accessories',1024.88),
+(199,'2025-01-11','Changed Mind',784.71),
+(122,'2025-04-27','Late Delivery',1008.05),
+(22,'2025-03-26','Late Delivery',996.16),
+(65,'2025-06-18','Changed Mind',1458.25),
+(165,'2025-06-06','Quality Issue',1482.1),
+(183,'2025-01-17','Missing Accessories',858.67),
+(163,'2025-06-14','Damaged Product',709.83),
+(125,'2025-03-29','Late Delivery',505.48),
+(91,'2025-01-07','Size Issue',368.57),
+(70,'2025-03-23','Wrong Item Delivered',465.42),
+(84,'2025-05-14','Changed Mind',1470.26),
+(46,'2025-04-20','Quality Issue',1273.8),
+(196,'2025-01-21','Ordered by Mistake',1171.81),
+(37,'2025-06-27','Late Delivery',926.28),
+(53,'2025-05-03','Product Not as Described',249.59),
+(100,'2025-01-04','Missing Accessories',924.75),
+(32,'2025-05-11','Changed Mind',1181.47),
+(55,'2025-01-28','Defective Product',412.12),
+(150,'2025-06-25','Wrong Item Delivered',854.93),
+(136,'2025-01-08','Wrong Item Delivered',147.99),
+(112,'2025-04-28','Defective Product',1442.31),
+(58,'2025-03-15','Damaged Product',754.34),
+(49,'2025-05-12','Ordered by Mistake',749.34),
+(118,'2025-06-27','Ordered by Mistake',202.52),
+(119,'2025-05-31','Defective Product',1008.86),
+(116,'2025-05-12','Missing Accessories',209.95),
+(167,'2025-02-23','Defective Product',461.84),
+(30,'2025-02-13','Quality Issue',679.1),
+(54,'2025-01-06','Late Delivery',336.36),
+(151,'2025-06-27','Quality Issue',1316.42),
+(180,'2025-05-01','Late Delivery',464.74);
+
