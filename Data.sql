@@ -314,9 +314,7 @@ VALUES
 
 
 
-
-
-
+-- Insert into categories table
 
 
 
