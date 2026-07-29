@@ -272,3 +272,37 @@ This query identifies **orders that contain more than three products**. It group
 - `COUNT()`
 - `HAVING`
 - `Aggregate Functions`
+
+
+# Problem 10: Find Customers Who Purchased From Multiple Categories
+
+## Business Scenario
+> "Cross-category buyers are valuable because they are more engaged."
+
+## SQL Query
+
+```sql
+SELECT
+    c.customer_name,
+    COUNT(DISTINCT p.category_id) AS categories_purchased
+FROM customers c
+JOIN orders o
+    ON c.customer_id = o.customer_id
+JOIN order_items oi
+    ON o.order_id = oi.order_id
+JOIN products p
+    ON oi.product_id = p.product_id
+GROUP BY c.customer_name
+HAVING COUNT(DISTINCT p.category_id) > 1
+ORDER BY categories_purchased DESC;
+```
+
+## Explanation
+This query identifies **customers who have purchased products from more than one category**. It joins the `customers`, `orders`, `order_items`, and `products` tables to trace each customer's purchases. The `COUNT(DISTINCT p.category_id)` function counts the number of unique product categories purchased by each customer. The `HAVING` clause filters the results to include only customers who have bought from multiple categories, while the results are sorted in descending order of categories purchased. This analysis helps businesses identify highly engaged customers with diverse purchasing behavior.
+
+## SQL Concepts Used
+- `Multiple JOINs`
+- `COUNT(DISTINCT ...)`
+- `GROUP BY`
+- `HAVING`
+- `ORDER BY`
