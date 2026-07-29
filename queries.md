@@ -218,3 +218,25 @@ This query calculates the **average discount percentage for each product categor
 - `ROUND()`
 - `ORDER BY`
 - `Aggregate Functions`
+
+# Problem 18: Revenue Lost Due to Discounts
+## Business Scenario
+
+"How much revenue did discounts reduce?"
+## SQL Query
+
+```sql
+
+SELECT
+    ROUND(
+        SUM(
+            oi.quantity *
+            oi.unit_price *
+            oi.discount_percent / 100
+        ),2
+    ) AS discount_cost
+FROM order_items oi;
+
+Concepts: Business calculations
+
+```
