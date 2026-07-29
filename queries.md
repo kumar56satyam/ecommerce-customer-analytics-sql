@@ -247,3 +247,28 @@ This query calculates the **total revenue lost due to discounts** across all ord
 - `Arithmetic Expressions`
 - `Business Calculations`
 - `Aggregate Functions`
+
+# Problem 9: Orders Containing More Than Three Products
+
+## Business Scenario
+> "Identify large basket orders."
+
+## SQL Query
+
+```sql
+SELECT
+    order_id,
+    COUNT(product_id) AS products
+FROM order_items
+GROUP BY order_id
+HAVING COUNT(product_id) > 3;
+```
+
+## Explanation
+This query identifies **orders that contain more than three products**. It groups all records in the `order_items` table by `order_id` and counts the number of products associated with each order. The `HAVING` clause filters the grouped results to return only those orders where the product count exceeds three. This analysis helps businesses identify large basket purchases, which can be useful for understanding customer buying behavior and planning promotional strategies.
+
+## SQL Concepts Used
+- `GROUP BY`
+- `COUNT()`
+- `HAVING`
+- `Aggregate Functions`
