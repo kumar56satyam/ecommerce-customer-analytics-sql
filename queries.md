@@ -219,24 +219,31 @@ This query calculates the **average discount percentage for each product categor
 - `ORDER BY`
 - `Aggregate Functions`
 
-# Problem 18: Revenue Lost Due to Discounts
-## Business Scenario
+# Problem 8: Revenue Lost Due to Discounts
 
-"How much revenue did discounts reduce?"
+## Business Scenario
+> "How much revenue did discounts reduce?"
+
 ## SQL Query
 
 ```sql
-
 SELECT
     ROUND(
         SUM(
             oi.quantity *
             oi.unit_price *
             oi.discount_percent / 100
-        ),2
+        ), 2
     ) AS discount_cost
 FROM order_items oi;
-
-Concepts: Business calculations
-
 ```
+
+## Explanation
+This query calculates the **total revenue lost due to discounts** across all order items. For each item, the discount amount is computed by multiplying the `quantity`, `unit_price`, and `discount_percent`, then dividing by 100. The `SUM()` function adds the discount amounts for all order items, and `ROUND()` formats the final result to two decimal places. This metric helps businesses understand the financial impact of discount strategies.
+
+## SQL Concepts Used
+- `SUM()`
+- `ROUND()`
+- `Arithmetic Expressions`
+- `Business Calculations`
+- `Aggregate Functions`
