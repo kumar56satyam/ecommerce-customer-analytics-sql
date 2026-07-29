@@ -186,3 +186,35 @@ This query calculates the **number of new customers acquired each month**. The `
 - `COUNT()`
 - `ORDER BY`
 - `Date Aggregation`
+
+
+# Problem 7: Average Discount by Category
+
+## Business Scenario
+> "Which categories require the highest discounts?"
+
+## SQL Query
+
+```sql
+SELECT
+    c.category_name,
+    ROUND(AVG(oi.discount_percent), 2) AS avg_discount
+FROM categories c
+JOIN products p
+    ON c.category_id = p.category_id
+JOIN order_items oi
+    ON p.product_id = oi.product_id
+GROUP BY c.category_name
+ORDER BY avg_discount DESC;
+```
+
+## Explanation
+This query calculates the **average discount percentage for each product category**. It joins the `categories`, `products`, and `order_items` tables to associate each order item with its respective category. The `AVG()` function computes the average discount applied to products within each category, while `ROUND()` formats the result to two decimal places. Finally, the categories are sorted in descending order to identify those receiving the highest average discounts.
+
+## SQL Concepts Used
+- `Multiple JOINs`
+- `GROUP BY`
+- `AVG()`
+- `ROUND()`
+- `ORDER BY`
+- `Aggregate Functions`
