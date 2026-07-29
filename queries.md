@@ -127,3 +127,35 @@ This query identifies customers who have returned **more than one product**. It 
 - `GROUP BY`
 - `COUNT()`
 - `HAVING`
+
+
+
+# Problem 15: Find the Most Frequently Purchased Product
+
+## Business Scenario
+> "Which product sells the highest quantity?"
+
+## SQL Query
+
+```sql
+SELECT
+    p.product_name,
+    SUM(oi.quantity) AS quantity_sold
+FROM products p
+JOIN order_items oi
+    ON p.product_id = oi.product_id
+GROUP BY p.product_name
+ORDER BY quantity_sold DESC
+LIMIT 1;
+```
+
+## Explanation
+This query identifies the **most frequently purchased product** based on the total quantity sold. It joins the `products` and `order_items` tables using `product_id`, sums the quantity of each product purchased, groups the results by `product_name`, and sorts them in descending order of total quantity sold. The `LIMIT 1` clause returns the product with the highest sales volume.
+
+## SQL Concepts Used
+- `JOIN`
+- `GROUP BY`
+- `SUM()`
+- `Aggregation`
+- `ORDER BY`
+- `LIMIT`
