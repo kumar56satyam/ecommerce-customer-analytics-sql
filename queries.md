@@ -399,3 +399,27 @@ This query identifies the **top three customers in each state based on total sal
 - `ROW_NUMBER()`
 - `PARTITION BY`
 - `ORDER BY`
+
+
+# Problem 23: Find Each Customer's First Purchase
+
+## Business Scenario
+> "Marketing wants to know when each customer made their first purchase."
+
+## SQL Query
+
+```sql
+SELECT
+    customer_id,
+    MIN(order_date) AS first_purchase
+FROM orders
+GROUP BY customer_id;
+```
+
+## Explanation
+This query determines the **first purchase date for each customer**. It groups all orders by `customer_id` and uses the `MIN()` aggregate function to find the earliest `order_date` for every customer. The result provides the date on which each customer made their first purchase, which is useful for customer lifecycle analysis, retention tracking, and marketing campaigns.
+
+## SQL Concepts Used
+- `GROUP BY`
+- `MIN()`
+- `Aggregate Functions`
