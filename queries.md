@@ -622,3 +622,41 @@ This query identifies the **top-selling product in each category** based on the 
 - `RANK()`
 - `PARTITION BY`
 - `ORDER BY`
+
+
+
+# Problem 19: Average Order Value Per Customer
+
+## Business Scenario
+> "Which customers have the highest average order value?"
+
+## SQL Query
+
+```sql
+SELECT
+    c.customer_name,
+    ROUND(
+        AVG(payment_amount),
+        2
+    ) AS avg_order_value
+FROM customers c
+JOIN orders o
+    ON c.customer_id = o.customer_id
+JOIN payments p
+    ON o.payment_id = p.payment_id
+WHERE payment_status = 'Completed'
+GROUP BY c.customer_name
+ORDER BY avg_order_value DESC;
+```
+
+## Explanation
+This query calculates the **average order value (AOV) for each customer** based on completed payments. It joins the `customers`, `orders`, and `payments` tables to associate every completed payment with its respective customer. The `AVG()` function computes the average payment amount for each customer, while `ROUND()` formats the result to two decimal places. Finally, the results are sorted in descending order to identify customers with the highest average order value.
+
+## SQL Concepts Used
+- `Multiple JOINs`
+- `AVG()`
+- `ROUND()`
+- `GROUP BY`
+- `WHERE`
+- `ORDER BY`
+- `Aggregate Functions`
