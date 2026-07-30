@@ -348,3 +348,54 @@ This query ranks customers based on their **total spending**. First, a **Common 
 - `Window Function`
 - `RANK()`
 - `ORDER BY`
+
+
+# Problem 12: Top 3 Customers in Every State
+
+## Business Scenario
+> "Who are our best customers in each state?"
+
+## SQL Query
+
+```sql
+WITH customer_sales AS
+(
+    SELECT
+        c.state,
+        c.customer_name,
+        SUM(p.payment_amount) AS total_sales
+    FROM customers c
+    JOIN orders o
+        ON c.customer_id = o.customer_id
+    JOIN payments p
+        ON o.payment_id = p.payment_id
+    WHERE p.payment_status = 'Completed'
+    GROUP BY c.state, c.customer_name
+)
+
+SELECT *
+FROM
+(
+    SELECT *,
+           ROW_NUMBER() OVER
+           (
+               PARTITION BY state
+               ORDER BY total_sales DESC
+           ) AS rn
+    FROM customer_sales
+) t
+WHERE rn <= 3;
+```
+
+## Explanation
+This query identifies the **top three customers in each state based on total sales**. The **CTE** `customer_sales` calculates the total completed sales for every customer within their respective state. The outer query uses the `ROW_NUMBER()` window function with `PARTITION BY state` to assign a ranking to customers separately within each state, ordered by total sales in descending order. Finally, only the top three customers (`rn <= 3`) from each state are returned.
+
+## SQL Concepts Used
+- `CTE (WITH)`
+- `JOIN`
+- `SUM()`
+- `GROUP BY`
+- `Window Function`
+- `ROW_NUMBER()`
+- `PARTITION BY`
+- `ORDER BY`
