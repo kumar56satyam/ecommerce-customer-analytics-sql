@@ -448,3 +448,40 @@ This query retrieves the **most recent purchase date for each customer**. It gro
 - `GROUP BY`
 - `MAX()`
 - `Aggregate Functions`
+
+
+# Problem 15: Running Revenue Over Time
+
+## Business Scenario
+> "Show cumulative revenue."
+
+## SQL Query
+
+```sql
+SELECT
+    payment_date::date,
+    SUM(payment_amount) AS daily_sales,
+
+    SUM(SUM(payment_amount))
+    OVER
+    (
+        ORDER BY payment_date::date
+    ) AS running_revenue
+
+FROM payments
+WHERE payment_status = 'Completed'
+GROUP BY payment_date::date
+ORDER BY payment_date::date;
+```
+
+## Explanation
+This query calculates the **daily revenue** and the **cumulative (running) revenue over time**. It first groups completed payments by date and computes the total sales for each day using `SUM(payment_amount)`. The window function `SUM(SUM(payment_amount)) OVER (ORDER BY payment_date::date)` then calculates a running total by adding each day's sales to all previous days' sales. This type of analysis is useful for tracking revenue growth and identifying long-term sales trends.
+
+## SQL Concepts Used
+- `Window Aggregate Function`
+- `Running Total`
+- `SUM()`
+- `OVER()`
+- `ORDER BY`
+- `GROUP BY`
+- `Date Casting (::date)`
