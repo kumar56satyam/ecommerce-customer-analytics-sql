@@ -306,3 +306,45 @@ This query identifies **customers who have purchased products from more than one
 - `GROUP BY`
 - `HAVING`
 - `ORDER BY`
+
+
+# Problem 11: Rank Customers by Total Spending
+
+## Business Scenario
+> "Rank customers from highest spender to lowest."
+
+## SQL Query
+
+```sql
+WITH customer_spending AS
+(
+    SELECT
+        c.customer_id,
+        c.customer_name,
+        SUM(p.payment_amount) AS total_spent
+    FROM customers c
+    JOIN orders o
+        ON c.customer_id = o.customer_id
+    JOIN payments p
+        ON o.payment_id = p.payment_id
+    WHERE p.payment_status = 'Completed'
+    GROUP BY c.customer_id, c.customer_name
+)
+
+SELECT
+    *,
+    RANK() OVER (ORDER BY total_spent DESC) AS customer_rank
+FROM customer_spending;
+```
+
+## Explanation
+This query ranks customers based on their **total spending**. First, a **Common Table Expression (CTE)** named `customer_spending` calculates the total amount spent by each customer by joining the `customers`, `orders`, and `payments` tables and summing completed payments. The outer query then uses the `RANK()` window function to assign a ranking, with the highest spender receiving rank **1**. If multiple customers have the same total spending, they receive the same rank, and the next rank is skipped accordingly.
+
+## SQL Concepts Used
+- `CTE (WITH)`
+- `JOIN`
+- `SUM()`
+- `GROUP BY`
+- `Window Function`
+- `RANK()`
+- `ORDER BY`
