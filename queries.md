@@ -523,4 +523,51 @@ This query compares **monthly revenue with the previous month's revenue**. The *
 - `GROUP BY`
 - `Window Function`
 - `LAG()`
+
+
+# Problem 27: Revenue Difference From Previous Month
+
+## Business Scenario
+> "Measure how much revenue increased or decreased compared to the previous month."
+
+## SQL Query
+
+```sql
+WITH monthly_sales AS
+(
+    SELECT
+        DATE_TRUNC('month', payment_date) AS month,
+        SUM(payment_amount) AS revenue
+    FROM payments
+    WHERE payment_status = 'Completed'
+    GROUP BY month
+)
+
+SELECT
+    month,
+    revenue,
+
+    LAG(revenue)
+        OVER (ORDER BY month) AS previous_month,
+
+    revenue -
+    LAG(revenue)
+        OVER (ORDER BY month)
+    AS revenue_growth
+
+FROM monthly_sales;
+```
+
+## Explanation
+This query calculates the **difference in revenue between the current month and the previous month**. The **CTE** `monthly_sales` first computes the total completed revenue for each month. The `LAG()` window function retrieves the previous month's revenue, and subtracting it from the current month's revenue produces the **month-over-month revenue growth**. A positive value indicates revenue growth, while a negative value indicates a decline compared to the previous month.
+
+## SQL Concepts Used
+- `CTE (WITH)`
+- `DATE_TRUNC()`
+- `SUM()`
+- `GROUP BY`
+- `Window Function`
+- `LAG()`
+- `ORDER BY`
+- `Arithmetic Expressions`
 - `ORDER BY`
