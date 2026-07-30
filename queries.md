@@ -401,7 +401,7 @@ This query identifies the **top three customers in each state based on total sal
 - `ORDER BY`
 
 
-# Problem 23: Find Each Customer's First Purchase
+# Problem 13: Find Each Customer's First Purchase
 
 ## Business Scenario
 > "Marketing wants to know when each customer made their first purchase."
@@ -422,4 +422,29 @@ This query determines the **first purchase date for each customer**. It groups a
 ## SQL Concepts Used
 - `GROUP BY`
 - `MIN()`
+- `Aggregate Functions`
+
+
+
+# Problem 14: Find Each Customer's Latest Purchase
+
+## Business Scenario
+> "Marketing wants to know when each customer made their most recent purchase."
+
+## SQL Query
+
+```sql
+SELECT
+    customer_id,
+    MAX(order_date) AS latest_purchase
+FROM orders
+GROUP BY customer_id;
+```
+
+## Explanation
+This query retrieves the **most recent purchase date for each customer**. It groups all orders by `customer_id` and uses the `MAX()` aggregate function to find the latest `order_date` associated with each customer. The result helps businesses identify recently active customers, analyze customer engagement, and support retention or remarketing campaigns.
+
+## SQL Concepts Used
+- `GROUP BY`
+- `MAX()`
 - `Aggregate Functions`
