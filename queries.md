@@ -485,3 +485,42 @@ This query calculates the **daily revenue** and the **cumulative (running) reven
 - `ORDER BY`
 - `GROUP BY`
 - `Date Casting (::date)`
+
+
+# Problem 16: Monthly Revenue Growth
+
+## Business Scenario
+> "Compare each month's revenue with the previous month to measure business growth."
+
+## SQL Query
+
+```sql
+WITH monthly_sales AS
+(
+    SELECT
+        DATE_TRUNC('month', payment_date) AS month,
+        SUM(payment_amount) AS revenue
+    FROM payments
+    WHERE payment_status = 'Completed'
+    GROUP BY month
+)
+
+SELECT
+    month,
+    revenue,
+    LAG(revenue)
+        OVER (ORDER BY month) AS previous_month
+FROM monthly_sales;
+```
+
+## Explanation
+This query compares **monthly revenue with the previous month's revenue**. The **CTE** `monthly_sales` first calculates the total completed revenue for each month. The `LAG()` window function then retrieves the revenue from the previous month for every row, allowing month-over-month performance comparisons. This analysis is commonly used to monitor business growth, identify seasonal trends, and evaluate revenue performance over time.
+
+## SQL Concepts Used
+- `CTE (WITH)`
+- `DATE_TRUNC()`
+- `SUM()`
+- `GROUP BY`
+- `Window Function`
+- `LAG()`
+- `ORDER BY`
