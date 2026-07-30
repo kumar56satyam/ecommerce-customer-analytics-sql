@@ -660,3 +660,29 @@ This query calculates the **average order value (AOV) for each customer** based 
 - `WHERE`
 - `ORDER BY`
 - `Aggregate Functions`
+
+
+# Problem 20: Which Cities Have the Highest Number of Customers?
+
+## Business Scenario
+> "Which cities have the largest customer base?"
+
+## SQL Query
+
+```sql
+SELECT
+    city,
+    COUNT(*) AS total_customers
+FROM customers
+GROUP BY city
+ORDER BY total_customers DESC;
+```
+
+## Explanation
+This query counts the **total number of customers in each city**. It groups customer records by `city` and uses the `COUNT()` aggregate function to calculate the number of customers in each group. The results are then sorted in descending order of customer count, allowing businesses to identify cities with the largest customer base for targeted marketing, expansion planning, and resource allocation.
+
+## SQL Concepts Used
+- `GROUP BY`
+- `COUNT()`
+- `ORDER BY`
+- `Aggregate Functions`
