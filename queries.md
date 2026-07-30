@@ -525,7 +525,7 @@ This query compares **monthly revenue with the previous month's revenue**. The *
 - `LAG()`
 
 
-# Problem 27: Revenue Difference From Previous Month
+# Problem 17: Revenue Difference From Previous Month
 
 ## Business Scenario
 > "Measure how much revenue increased or decreased compared to the previous month."
@@ -570,4 +570,55 @@ This query calculates the **difference in revenue between the current month and 
 - `LAG()`
 - `ORDER BY`
 - `Arithmetic Expressions`
+- `ORDER BY`
+
+# Problem 18: Top Selling Product in Every Category
+
+## Business Scenario
+> "Identify the best-selling product in each product category."
+
+## SQL Query
+
+```sql
+WITH product_sales AS
+(
+    SELECT
+        c.category_name,
+        p.product_name,
+        SUM(oi.quantity) AS quantity
+    FROM categories c
+    JOIN products p
+        ON c.category_id = p.category_id
+    JOIN order_items oi
+        ON p.product_id = oi.product_id
+    GROUP BY
+        c.category_name,
+        p.product_name
+)
+
+SELECT *
+FROM
+(
+    SELECT *,
+           RANK() OVER
+           (
+               PARTITION BY category_name
+               ORDER BY quantity DESC
+           ) AS rnk
+    FROM product_sales
+) t
+WHERE rnk = 1;
+```
+
+## Explanation
+This query identifies the **top-selling product in each category** based on the total quantity sold. The **CTE** `product_sales` calculates the total quantity sold for every product within its category. The `RANK()` window function then ranks products separately within each category using `PARTITION BY category_name` and orders them by quantity sold in descending order. Finally, only the products with **Rank 1** are returned. If multiple products have the same highest quantity, they all receive Rank 1 and are included in the results.
+
+## SQL Concepts Used
+- `CTE (WITH)`
+- `Multiple JOINs`
+- `SUM()`
+- `GROUP BY`
+- `Window Function`
+- `RANK()`
+- `PARTITION BY`
 - `ORDER BY`
